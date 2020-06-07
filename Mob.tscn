@@ -10,9 +10,9 @@
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 5 ), ExtResource( 6 ) ],
+"frames": [ ExtResource( 4 ), ExtResource( 7 ) ],
 "loop": true,
-"name": "walk",
+"name": "swim",
 "speed": 3.0
 }, {
 "frames": [ ExtResource( 3 ), ExtResource( 2 ) ],
@@ -20,9 +20,9 @@ animations = [ {
 "name": "fly",
 "speed": 3.0
 }, {
-"frames": [ ExtResource( 4 ), ExtResource( 7 ) ],
+"frames": [ ExtResource( 5 ), ExtResource( 6 ) ],
 "loop": true,
-"name": "swim",
+"name": "walk",
 "speed": 3.0
 } ]
 

@@ -9,6 +9,8 @@ signal hit
 export var speed = 400
 var screen_size
 
+var target = Vector2()
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	hide()
@@ -19,20 +21,28 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+# Change the target whenever a touch event happens.
+func _input(event):
+	if event is InputEventScreenTouch and event.pressed:
+		target = event.position
+
 
 func _process(delta):
 	var valocity = Vector2()
-	if (Input.is_action_pressed("ui_up")):
-		valocity.y -= 1
-	
-	if (Input.is_action_pressed("ui_down")):
-		valocity.y += 1
-		
-	if (Input.is_action_pressed("ui_left")):
-		valocity.x -= 1
-		
-	if (Input.is_action_pressed("ui_right")):
-		valocity.x += 1
+#	if (Input.is_action_pressed("ui_up")):
+#		valocity.y -= 1
+#
+#	if (Input.is_action_pressed("ui_down")):
+#		valocity.y += 1
+#
+#	if (Input.is_action_pressed("ui_left")):
+#		valocity.x -= 1
+#
+#	if (Input.is_action_pressed("ui_right")):
+#		valocity.x += 1
+
+	if position.distance_to(target) > 10:
+		valocity = target - position
 		
 	if (valocity.length() > 0):
 		valocity = valocity.normalized() * speed
@@ -67,5 +77,6 @@ func _on_Player__body_entered(body):
 	
 func start(pos):
 	position = pos
+	target = pos
 	show()
 	$CollisionShape2D.disabled = false
